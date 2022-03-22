@@ -36,23 +36,23 @@ namespace _1
 
             foreach (var k in src)
                 Console.WriteLine(k);
+                Console.WriteLine("Press any key to exit.");
+                Console.ReadKey();
+
+            //var examples = File.ReadAllLines(FileName, Encoding.UTF8);
+            //List<Example> examples_list = new List<Example>();
+            //foreach (string s in examples)
+            //{
+            //    //examples_list.Add(new Example(ex[0], Convert.ToInt32(ex[1])));
+            //    examples_list.Add(s.DeserializeToExample());
+            //}
+
+            //var final_examples_list = examples_list.OrderBy(a => a.example_name);
+
+            //foreach (var k in final_examples_list)
+            //    Console.WriteLine(k.example_name, k.weight);
 
 
-            var examples = File.ReadAllLines(FileName, Encoding.UTF8);
-            List<Example> examples_list = new List<Example>();
-            foreach (string s in examples)
-            {
-                //examples_list.Add(new Example(ex[0], Convert.ToInt32(ex[1])));
-                examples_list.Add(s.DeserializeToExample());
-            }
-
-            var final_examples_list = examples_list.OrderBy(a => a.example_name);
-
-            foreach (var k in final_examples_list)
-                Console.WriteLine(k.example_name, k.weight);
-
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -101,12 +101,12 @@ namespace _1
                 }
             }
 
-            public Example(string a, int b)
-            {
-                example_name = a;
-                weight = b;
+            //public Example(string a, int b)
+            //{
+            //    example_name = a;
+            //    weight = b;
 
-            }
+            //}
         }
     }
 
