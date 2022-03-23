@@ -18,22 +18,17 @@ namespace _1
         {
 
             Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Trace("trace message");
-            logger.Debug("debug message");
-            logger.Info("info message");
-            logger.Warn("warn message");
-            logger.Error("error message");
-            logger.Fatal("fatal message");
-
+          
             if (args.Length != 1)
             {
                 Console.WriteLine("Укажите в параметрах запуска имя файла");
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
+                logger.Error("error message");
                 return;
             }
 
-            //AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
             string FileName = args[0];
 
@@ -42,6 +37,7 @@ namespace _1
                 Console.WriteLine($"Файл {FileName} не существует");
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
+                logger.Error("error message");
                 return;
             }
 
@@ -49,13 +45,9 @@ namespace _1
             {
                 HasHeaderRecord = false
             };
-
-
-            var cultInfo = new CultureInfo("");
-
+          
             var reader = File.OpenText(FileName);
             var csvRead = new CsvHelper.CsvReader(reader, config);
-
 
             {
                 var records = csvRead.GetRecords<Example>().ToList();
@@ -65,10 +57,10 @@ namespace _1
                     foreach (Example el in records)
                     {
                         Console.WriteLine(el);
-                        Console.WriteLine("Press any key to exit");
-                        Console.ReadKey();
+                        logger.Info("info message");
                     }
-
+                    Console.WriteLine("Press any key to exit");
+                    Console.ReadKey();
                 }
                 else
                 {
@@ -79,7 +71,7 @@ namespace _1
                     string[] words = { "Документ7", "Документ2", "Документ3", "Документ5" };
 
                     List<Example> writeList = new List<Example>();
-                    for (int ctr = 0; ctr <= 4; ctr++)
+                    for (int c = 0; c <= words.Length; c++)
                         writeList.Add(new Example(rand.Next().ToString(), words[rand.Next(0, words.Length)], words[rand.Next(0, words.Length)], words[rand.Next(0, words.Length)], words[rand.Next(0, words.Length)], words[rand.Next(0, words.Length)], words[rand.Next(0, words.Length)]));
 
                     csvWrite.WriteRecords(writeList);
@@ -99,34 +91,12 @@ namespace _1
 
             }
         }
-            //var src = File.ReadAllLines(FileName, Encoding.UTF8)
-            //    .Select(c => c.DeserializeToExample()).OrderBy(c => c.example_name);
-
-            //foreach (var k in src)
-            //    Console.WriteLine(k);
-            //    Console.WriteLine("Press any key to exit.");
-            //    Console.ReadKey();
-
-            //var examples = File.ReadAllLines(FileName, Encoding.UTF8);
-            //List<Example> examples_list = new List<Example>();
-            //foreach (string s in examples)
-            //{
-            //    //examples_list.Add(new Example(ex[0], Convert.ToInt32(ex[1])));
-            //    examples_list.Add(s.DeserializeToExample());
-            //}
-
-            //var final_examples_list = examples_list.OrderBy(a => a.example_name);
-
-            //foreach (var k in final_examples_list)
-            //    Console.WriteLine(k.example_name, k.weight);
 
 
-        
-
-        //private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        //{
-        //    Console.WriteLine($"Произошла непредвиденная ошибка {(e.ExceptionObject as Exception)?.Message}");
-        //}
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Console.WriteLine($"Произошла непредвиденная ошибка {(e.ExceptionObject as Exception)?.Message}");
+        }
 
 
         public class Example
@@ -184,7 +154,8 @@ namespace _1
                 Initiator       = f;
                 Chapter         = g;
             }
-        }
+        
+         }
     }
 
     //public static class StrExt
