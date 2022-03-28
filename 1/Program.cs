@@ -67,30 +67,15 @@ namespace _1
                 System.IO.File.WriteAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path.txt", serialized);
 
                 //десериализуем
-                //List<Example> TestJson = new List<Example>();
-                //var serializer = new JsonSerializer();
-                //using (StreamReader fs = new StreamReader(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path1.json")) ;
-                
+                               
                 var TestJson  = JsonConvert.DeserializeObject<List<ExampleForReader>>(File.ReadAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path1.json"));
-                //using (StreamReader file = File.OpenText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path1.json"))
-                //{
-                //    JsonSerializer ser = new JsonSerializer();
-                //    Example TestJson = (Example)serializer.Deserialize(file, typeof(Example));
-
-                //}
-                //string fileNamejson = "C:\Users\sonja\OneDrive\Рабочий стол\cb\03 - 01 - 1\path1.json";
-                //string jsonString = File.ReadAllText(fileNamejson);
-                //{
-                //    using (var jsonTextWriter = new JsonTextWriter(fs))
-                //    {
-                //        serializer.Serialize(fs, TestJson);
+                
                 foreach (ExampleForReader el in TestJson)
                 {
                     Console.WriteLine(el);
 
                 }
-                //    }
-                //}
+                
 
             }
 
