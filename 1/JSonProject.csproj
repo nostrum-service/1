@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0CC5881C-ED15-4D3B-B11D-915A7B9EA50D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_1</RootNamespace>
-    <AssemblyName>1</AssemblyName>
+    <RootNamespace>JSonProject</RootNamespace>
+    <AssemblyName>JSonProject</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -85,11 +85,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Example.cs" />
+    <Compile Include="Execution.cs" />
     <Compile Include="ExampleForReader.cs" />
     <Compile Include="ExampleForReaderMap.cs" />
-    <Compile Include="ExampleMap.cs" />
     <Compile Include="NameAttribute.cs" />
+    <Compile Include="Partners.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BaseAttribute;
-using Newtonsoft.Json;
+
 
 namespace Base
 {
@@ -18,36 +18,35 @@ namespace Base
             return $"Содержание строки {Number}, {Document}, {Organization}, {DateDay.ToString("d")}, {Department}, {Initiator}, {Chapter}, {Quantity}";
         }
 
-        [JsonProperty("NumberFS")]
+        
         [Name("№ п/п")]
         public string Number { get; set; }
 
-        [JsonProperty("DocumentFS")]
+        
         [Name("Документ")]
         public string Document { get; set; }
 
-        [JsonProperty("OrganizationFS")]
+   
         [Name("Организация")]
         public string Organization { get; set; }
 
-        [JsonProperty("DateDayFS")]
+ 
         [Name("Дата замечания")]
         public DateTime DateDay { get; set; }
 
-        [JsonProperty("DepartmentFS")]
+ 
         [Name("Подразделение инициатора")]
         public string Department { get; set; }
 
-        [JsonProperty("InitiatorFS")]
+
         [Name("Инициатор (ФИО)")]
         public string Initiator { get; set; }
 
-        //[JsonProperty("ChapterFS")]
-        [JsonIgnore]
+
         [Name("№ и название раздела")]
         public string Chapter { get; set; }
 
-        [JsonProperty("QuantityFS")]
+
         [Name("Количество")]
         public int Quantity { get; set; }
 
