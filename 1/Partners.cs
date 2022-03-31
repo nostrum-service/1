@@ -9,15 +9,23 @@ namespace TableOfPartners
 {
     public class Partners
     {
-        public Partners()
-        {
-        }
-       
+             
         public string NameOfPartner { get; set; }
-        public string PartnerID { get; set; }
+        public int PartnerID { get; set; }
         //public ExampleForReader DocumentIDOfPartner { get; set; }
+        //public List<ExampleForReader> ExamplesForReader { get; set; }
 
-        public Partners(string a, string b)
+        //public Partners()
+        //{
+        //    ExamplesForReader = new List<ExampleForReader>();
+        //}
+
+        //public virtual void AddDocuments(ExampleForReader ExampleForReader)
+        //{
+        //    ExampleForReader.PartnerID = this;
+        //    ExamplesForReader.Add(ExampleForReader);
+        //}
+        public Partners(string a, int b)
         {
             NameOfPartner = a;
             PartnerID = b;

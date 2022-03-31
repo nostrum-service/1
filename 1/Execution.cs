@@ -31,14 +31,7 @@ namespace Execution
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            //string FileName = args[0];
 
-            //var config = new CsvConfiguration(CultureInfo.CurrentCulture)
-            //{
-            //    HasHeaderRecord = true,
-            //    DetectDelimiter = true,
-            //    Encoding = Encoding.GetEncoding("UTF-8"),
-            //};
 
             var rand = new Random();
             string tekdate = string.Empty;
@@ -63,48 +56,31 @@ namespace Execution
             List<ExampleForReader> writeList = new List<ExampleForReader>();
             List<Partners> PartnerList = new List<Partners>();
 
-            for (int d = 0; d <= words.Length-1; d++)
-                PartnerList.Add(new Partners(words[d], d.ToString()));
+            for (int d = 0; d <= words.Length - 1; d++)
+                PartnerList.Add(new Partners(words[d], d));
 
-            for (int c = 0; c <= words.Length; c++)
-                writeList.Add(new ExampleForReader(rand.Next().ToString(), 
+            for (int c = 0; c <= words.Length - 1; c++)
+                writeList.Add(new ExampleForReader(rand.Next().ToString(),
                     words[rand.Next(0, words.Length)],
-                    PartnerList[c],
-                    words[rand.Next(0, words.Length)], 
-                    norm_dates[rand.Next(0, dates.Length)], 
-                    words[rand.Next(0, words.Length)], 
-                    words[rand.Next(0, words.Length)], 
+                    PartnerList[4],
+                    words[rand.Next(0, words.Length)],
+                    norm_dates[rand.Next(0, norm_dates.Count() - 1)],
+                    words[rand.Next(0, words.Length)],
+                    words[rand.Next(0, words.Length)],
                     words[rand.Next(0, words.Length)],
                     words[rand.Next(0, words.Length)]));
 
-            //List<ExampleForReader> records = new List<ExampleForReader>();
-
-            //if (File.Exists(FileName))
-            //{
-                //var reader = File.OpenText(FileName);
-                //var csvRead = new CsvHelper.CsvReader(reader, config);
-                //csvRead.Context.RegisterClassMap<ExampleForReaderMap>();
-                //records = csvRead.GetRecords<ExampleForReader>().ToList();
-                //reader.Close();
-
-                //сериализуем
-                string serialized = JsonConvert.SerializeObject(writeList, new JsonSerializerSettings
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
-                System.IO.File.WriteAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322.txt", serialized);
-            //    //десериализуем
-            //    var TestJson = JsonConvert.DeserializeObject<List<ExampleForReader>>(File.ReadAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path1.json"));
-
-            //    foreach (ExampleForReader el in TestJson)
-            //    {
-            //        Console.WriteLine(el);
-            //    }
-
-            ////}
-
-            //Console.WriteLine("Press any key to exit");
-            //Console.ReadKey();
+            //сериализуем
+            string serialized = JsonConvert.SerializeObject(new { PartnerList, writeList }, new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                //Formatting = Formatting.Indented,
+                //ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            System.IO.File.WriteAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322-.json", serialized);
+            Console.WriteLine(serialized);
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
         }
 
 

@@ -1,0 +1,108 @@
+[
+  {
+    "$id": "1",
+    "NumberFS": "2074886",
+    "DocumentFS": "Контрагент6",
+    "PartnerID": {
+      "$id": "2",
+      "NameOfPartner": "Контрагент4",
+      "PartnerID": 4
+    },
+    "OrganizationFS": "Контрагент4",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент3",
+    "InitiatorFS": "Контрагент3",
+    "QuantityFS": "Контрагент5"
+  },
+  {
+    "$id": "3",
+    "NumberFS": "1615729803",
+    "DocumentFS": "Контрагент3",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент2",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент4",
+    "InitiatorFS": "Контрагент4",
+    "QuantityFS": "Контрагент8"
+  },
+  {
+    "$id": "4",
+    "NumberFS": "626865364",
+    "DocumentFS": "Контрагент5",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент1",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент1",
+    "InitiatorFS": "Контрагент2",
+    "QuantityFS": "Контрагент2"
+  },
+  {
+    "$id": "5",
+    "NumberFS": "1571490694",
+    "DocumentFS": "Контрагент5",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент8",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент3",
+    "InitiatorFS": "Контрагент6",
+    "QuantityFS": "Контрагент1"
+  },
+  {
+    "$id": "6",
+    "NumberFS": "406269149",
+    "DocumentFS": "Контрагент5",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент6",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент5",
+    "InitiatorFS": "Контрагент6",
+    "QuantityFS": "Контрагент1"
+  },
+  {
+    "$id": "7",
+    "NumberFS": "63529920",
+    "DocumentFS": "Контрагент1",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент4",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент4",
+    "InitiatorFS": "Контрагент5",
+    "QuantityFS": "Контрагент7"
+  },
+  {
+    "$id": "8",
+    "NumberFS": "1202701926",
+    "DocumentFS": "Контрагент7",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент2",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент1",
+    "InitiatorFS": "Контрагент2",
+    "QuantityFS": "Контрагент5"
+  },
+  {
+    "$id": "9",
+    "NumberFS": "673681913",
+    "DocumentFS": "Контрагент8",
+    "PartnerID": {
+      "$ref": "2"
+    },
+    "OrganizationFS": "Контрагент5",
+    "DateDayFS": "2021-11-30T00:00:00",
+    "DepartmentFS": "Контрагент2",
+    "InitiatorFS": "Контрагент3",
+    "QuantityFS": "Контрагент7"
+  }
+]

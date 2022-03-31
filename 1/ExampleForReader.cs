@@ -11,9 +11,7 @@ namespace Reader
 {
     public class ExampleForReader
     {
-        public ExampleForReader()
-        {
-        }
+       
         public override string ToString()
         {
             return $"Содержание строки {Number}, {Document}, {PartnerID}, {Organization}, {DateDay}, {Department}, {Initiator}, {Chapter}, {Quantity}";
@@ -45,10 +43,8 @@ namespace Reader
         [JsonProperty("QuantityFS")]
         public string Quantity { get; set; }
 
-        public List<Partners> Partners; 
-
-
-        public ExampleForReader(string a, string b, string c, string d, DateTime e, string f, string g, string h, string i)
+        
+        public ExampleForReader(string a, string b, Partners c, string d, DateTime e, string f, string g, string h, string i)
         {
             Number = a;
             Document = b;
