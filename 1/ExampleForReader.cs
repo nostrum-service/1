@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BaseAttribute;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Linq;
+using System.Reflection;
 using TableOfPartners;
 
 namespace Reader
@@ -28,6 +32,8 @@ namespace Reader
         [JsonProperty("OrganizationFS")]
         public string Organization { get; set; }
 
+        //[JsonConverter(typeof(UnixTimeToDatetimeConverter))]
+       // [JsonProperty("DateDayFS", ItemConverterType = typeof(JavaScriptDateTimeConverter))]
         [JsonProperty("DateDayFS")]
         public DateTime DateDay { get; set; }
 
@@ -57,6 +63,30 @@ namespace Reader
             Quantity = i;
 
         }
+
+        //class UnixTimeToDatetimeConverter : DateTimeConverterBase
+        //{
+        //    private static readonly DateTime _epoch =
+        //        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified);
+
+
+        //    public override void WriteJson(JsonWriter writer, object value,
+        //        JsonSerializer serializer)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+
+        //    public override object ReadJson(JsonReader reader, Type objectType,
+        //        object existingValue, JsonSerializer serializer)
+        //    {
+        //        if (reader.Value == null)
+        //        {
+        //            return null;
+        //        }
+
+        //        return _epoch.AddSeconds(Convert.ToDouble(reader.Value)).ToLocalTime();
+        //    }
+        //}
 
     }
 }

@@ -20,8 +20,15 @@ namespace JSonProject
     {
         static void Main(string[] args)
         {
+            //if (args.Length != 1)
+            //{
+            //    Console.WriteLine("Укажите в параметрах запуска имя файла");
+            //    Console.WriteLine("Press any key to exit.");
+            //    Console.ReadKey();
+            //    return;
+            //}
             ProgramExecution pr = new ProgramExecution();
-            pr.MainExec(args);
+            pr.MainExec();
         }
        
 
