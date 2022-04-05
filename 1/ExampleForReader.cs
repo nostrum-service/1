@@ -49,7 +49,9 @@ namespace Reader
         [JsonProperty("QuantityFS")]
         public string Quantity { get; set; }
 
-        
+        public ExampleForReader() { }
+
+        //если делать конструктор с параметрами - то параметры надо именовать нормально. чтобы при оформлении вызова можно было понять, что тутда передается. в твоем случае лучше без параметризованного контсрутора обойтись
         public ExampleForReader(string a, string b, Partners c, string d, DateTime e, string f, string g, string h, string i)
         {
             Number = a;

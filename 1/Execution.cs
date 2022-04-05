@@ -33,12 +33,21 @@ namespace Execution
             string[] words = { "Контрагент1", "Контрагент8", "Контрагент2", "Контрагент3", "Контрагент4", "Контрагент5", "Контрагент6", "Контрагент7" };
             string[] dates = { "30.11.2021", "01.05.1990", "15.06.2000", "8.01.1981" };
 
+            //массив дат можно сразу определить
+            DateTime[] dates1 = { new DateTime(2021, 1, 1), new DateTime(2020, 2, 4) };
+
             List<DateTime> norm_dates = new List<DateTime>();
             DateTime datevalue;
+
+            //а что ты тут хотела сделать?
             for (int d = 0; d <= dates.Length; d++)
                 tekdate = dates[rand.Next(0, dates.Length)];
+
+            //при успешной попытке разбора даты из строки, переменная datevalue содержит значение распознаной даты. повторно разбирать не требуется
             if (DateTime.TryParse(tekdate, out datevalue))
-                norm_dates.Add(DateTime.Parse(tekdate));
+                norm_dates.Add(datevalue);
+            //if (DateTime.TryParse(tekdate, out datevalue))
+            //    norm_dates.Add(DateTime.Parse(tekdate));
             else
             {
                 Console.WriteLine($"Невозможно преобразовать строку в тип Дата {tekdate}");
@@ -65,8 +74,18 @@ namespace Execution
                     col.Insert(part);
                 }
             }
-            for (int c = 0; c <= words.Length - 1; c++)
+
+            // так проще, а есть еще foreach(var word in words)
+            for (int c = 0; c < words.Length; c++)
+            //for (int c = 0; c <= words.Length - 1; c++)
             {
+                //такая инициализация нагляднее
+                var test = new ExampleForReader {
+                    Number = rand.Next().ToString(),
+                    Document = words[rand.Next(0, words.Length)]
+                    //и т.д.
+                };
+
                 writeList.Add(new ExampleForReader(rand.Next().ToString(),
                     words[rand.Next(0, words.Length)],
                     PartnerList[4],
@@ -78,6 +97,8 @@ namespace Execution
                     words[rand.Next(0, words.Length)],
                     words[rand.Next(0, words.Length)]));
                 //и в бд
+
+                //блок using (var db = new LiteDatabase(baseParametre)) лучше перенести выше цикла for. т.к. операция открытия БД все-таки ресурсоемкая
                 using (var db = new LiteDatabase(baseParametre))
                 {
                     // Получаем коллекцию
@@ -95,6 +116,18 @@ namespace Execution
                 }
             }
 
+            #region туда, сюда удобно
+            var opt = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                DateFormatString = "yyyy-MM-ddThh:mm:ss"
+            };
+            var ctx = new DbContextOne { PartnerList = PartnerList, WriteList = writeList };
+            string sr = JsonConvert.SerializeObject(ctx, opt);
+
+            DbContextOne restored = JsonConvert.DeserializeObject<DbContextOne>(sr, opt);
+            #endregion
+
 
             //сериализуем
             //неудобно
@@ -105,7 +138,8 @@ namespace Execution
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                 DateFormatString = jsonSettings.DateFormatString
             });
-            System.IO.File.WriteAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322-.json", serialized);
+            //System.IO.File.WriteAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322-.json", serialized);
+            System.IO.File.WriteAllText(@"path300322-.json", serialized);
 
             ////из бд
             //using (var db = new LiteDatabase(baseParametre))
@@ -115,7 +149,8 @@ namespace Execution
             //    var results = coldoc.Find(x => x.PartnerID);
             //}
             //десериализуем
-            string data = File.ReadAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322-.json");
+            //string data = File.ReadAllText(@"C:\Users\sonja\OneDrive\Рабочий стол\cb\03-01-1\path300322-.json");
+            string data = File.ReadAllText(@"path300322-.json");
 
             List<ExampleForReader> writeList1 = new List<ExampleForReader>();
             List<Partners> PartnerList1 = new List<Partners>();
@@ -124,9 +159,9 @@ namespace Execution
 
             var f = JsonConvert.DeserializeObject<dynamic>(data, jsonSettings1);
             foreach (var x in f.PartnerList)
-
             {
-                PartnerList1.Add(new Partners(x.NameOfPartner.ToString(), Convert.ToInt32(x.PartnerID)));
+                //PartnerList1.Add(new Partners(x.NameOfPartner.ToString(), Convert.ToInt32(x.PartnerID)));
+                PartnerList1.Add(new Partners((string)x.NameOfPartner, (int)x.PartnerID));
                 Console.WriteLine(x.NameOfPartner);
 
             }
@@ -173,6 +208,10 @@ namespace Execution
 
     }
 
-
+    public class DbContextOne
+    {
+        public IEnumerable<Partners> PartnerList { get; set; }
+        public IEnumerable<ExampleForReader> WriteList { get; set; }
+    }
 
 }
