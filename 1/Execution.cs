@@ -41,6 +41,7 @@ namespace Execution
 
             //а что ты тут хотела сделать?
             //++s.e. - хотела создать массив случайных дат
+            //ты в цикле dates.Length раз присваивала переменной tekdate значение случайной даты... я не понял :)
             for (int d = 0; d <= dates.Length; d++)
                 tekdate = dates[rand.Next(0, dates.Length)];
 
@@ -145,6 +146,18 @@ namespace Execution
                                                  group p by p.PartnerID into m
                                                  select new { Partner_ = m.Key.NameOfPartner, CountD = m.Count() }
                                };
+
+            //select new
+            //{
+            //    Partner = g.Key, все правильно. получила контрагента и кол-во документов по нему. 
+            //    Count_ = g.Count(),
+            //
+            //а вот это это что? 
+            //    exampleDocs = from p in g 
+            //                  group p by p.PartnerID into m
+            //                  select new { Partner_ = m.Key.NameOfPartner, CountD = m.Count() }
+            //};
+
 
             foreach (var seldoc in selectedDocs)
             {
