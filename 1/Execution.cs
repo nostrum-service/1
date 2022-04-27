@@ -22,7 +22,6 @@ namespace Execution
     {
         public void MainExec()
         {
-
             Logger logger = LogManager.GetCurrentClassLogger();
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -43,19 +42,21 @@ namespace Execution
             //++s.e. - хотела создать массив случайных дат
             //ты в цикле dates.Length раз присваивала переменной tekdate значение случайной даты... я не понял :)
             for (int d = 0; d <= dates.Length; d++)
+            {
                 tekdate = dates[rand.Next(0, dates.Length)];
 
-            //при успешной попытке разбора даты из строки, переменная datevalue
-            //содержит значение распознаной даты. повторно разбирать не требуется
-            //++s.e. - поняла
-            if (DateTime.TryParse(tekdate, out datevalue))
-                norm_dates.Add(datevalue);
-            else
-            {
-                Console.WriteLine($"Невозможно преобразовать строку в тип Дата {tekdate}");
-                Console.WriteLine("Press any key to exit.");
-                Console.ReadKey();
-                return;
+                //при успешной попытке разбора даты из строки, переменная datevalue
+                //содержит значение распознаной даты. повторно разбирать не требуется
+                //++s.e. - поняла
+                if (DateTime.TryParse(tekdate, out datevalue))
+                    norm_dates.Add(datevalue);
+                else
+                {
+                    Console.WriteLine($"Невозможно преобразовать строку в тип Дата {tekdate}");
+                    Console.WriteLine("Press any key to exit.");
+                    Console.ReadKey();
+                    return;
+                }
             }
 
             List<ExampleForReader> writeList = new List<ExampleForReader>();
@@ -142,9 +143,7 @@ namespace Execution
                                {
                                    Partner = g.Key,
                                    Count_ = g.Count(),
-                                   exampleDocs = from p in g
-                                                 group p by p.PartnerID into m
-                                                 select new { Partner_ = m.Key.NameOfPartner, CountD = m.Count() }
+                                   exampleDocs = g
                                };
 
             //select new
@@ -158,15 +157,18 @@ namespace Execution
             //                  select new { Partner_ = m.Key.NameOfPartner, CountD = m.Count() }
             //};
 
-
             foreach (var seldoc in selectedDocs)
             {
-             //   Console.WriteLine($"{seldoc.Partner} : {seldoc.Count_}");
-                foreach (var sel in seldoc.exampleDocs)
-                {
-                    Console.WriteLine($"{sel.Partner_} : {sel.CountD}");
-                }
+                Console.WriteLine($"{seldoc.Partner} : {seldoc.Count_}");
+
+                Console.WriteLine(seldoc.exampleDocs.Select(c => $"{c.Document} : {c.Number}\r\n"));
+                //foreach (var c in seldoc.exampleDocs)
+                //{
+                //    Console.WriteLine($"{c.Document} : {c.Number}");
+                //}
+
             }
+
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
             #endregion
