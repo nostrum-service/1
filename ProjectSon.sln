@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSonProject", "1\JSonProjec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCsvProject", "CsvProject\YCsvProject.csproj", "{5DA92B68-AC1C-4975-9FBB-C11E01DE95CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0422", "0422\0422.csproj", "{C4DB3862-CC22-434A-9093-48C9A559DAB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5DA92B68-AC1C-4975-9FBB-C11E01DE95CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DA92B68-AC1C-4975-9FBB-C11E01DE95CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DA92B68-AC1C-4975-9FBB-C11E01DE95CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4DB3862-CC22-434A-9093-48C9A559DAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4DB3862-CC22-434A-9093-48C9A559DAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4DB3862-CC22-434A-9093-48C9A559DAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4DB3862-CC22-434A-9093-48C9A559DAB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
