@@ -21,37 +21,42 @@ namespace _0422
         {
             InitializeComponent();
 
-            GetData();
+        }
 
-            void GetData()
+        public void ConnectToDB()
+        {
+            string connectString = ConfigurationManager.AppSettings["database"];
+
+            using (var db = new LiteDatabase(connectString))
             {
-                string connectString = ConfigurationManager.AppSettings["database"];
+                // Получаем коллекцию
+                var coldoc = db.GetCollection<ExampleForReader>("Docs");
+                var result = coldoc.FindAll();
+                BindingList<ExampleForReader> Listex = new BindingList<ExampleForReader>();
+                foreach (ExampleForReader c in result)
+                    Listex.Add(c);
+                dataGridView1.ColumnHeadersVisible = true;
+                dataGridView1.DataSource = Listex;
+                
+                dataGridView1.ReadOnly = true;
+                //dataGridView1.AllowUserToDeleteRowsChanged += false;
 
-                using (var db = new LiteDatabase(connectString))
-                {
-                    // Получаем коллекцию
-                    var coldoc = db.GetCollection<ExampleForReader>("Docs");
-                    var result = coldoc.FindAll();
-                    BindingList<ExampleForReader> Listex = new BindingList<ExampleForReader>();
-                    foreach (ExampleForReader c in result)
-                        Listex.Add(c);
-                    dataGridView1.DataSource = Listex;
-                    
-                }
             }
         }
-
-
-
-        private void Button_CreateDoc_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
-           // MainForm MainForm1 = new MainForm();
-           // MainForm1.Show();
+            CreateForm newFormCreate = new CreateForm(this);
+            newFormCreate.ShowDialog(this);
+            if (newFormCreate.DialogResult == DialogResult.OK)
+            {
+                ConnectToDB();
+            }
 
-            CreateForm newFormCreate = new CreateForm();
-            newFormCreate.Show();
         }
 
-       
+        private void btnConnectToDB_Click(object sender, EventArgs e)
+        {
+            ConnectToDB();
+        }
     }
 }

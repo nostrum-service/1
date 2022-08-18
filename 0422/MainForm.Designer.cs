@@ -30,48 +30,102 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Button_CreateDoc = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnConnectToDB = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCreate = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 108);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(748, 330);
+            this.dataGridView1.Size = new System.Drawing.Size(914, 600);
             this.dataGridView1.TabIndex = 1;
             // 
             // Button_CreateDoc
             // 
-            this.Button_CreateDoc.Location = new System.Drawing.Point(34, 51);
-            this.Button_CreateDoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Button_CreateDoc.Location = new System.Drawing.Point(0, 0);
             this.Button_CreateDoc.Name = "Button_CreateDoc";
-            this.Button_CreateDoc.Size = new System.Drawing.Size(82, 22);
-            this.Button_CreateDoc.TabIndex = 2;
-            this.Button_CreateDoc.Text = "Create";
-            this.Button_CreateDoc.UseVisualStyleBackColor = true;
-            this.Button_CreateDoc.Click += new System.EventHandler(this.Button_CreateDoc_Click);
+            this.Button_CreateDoc.Size = new System.Drawing.Size(75, 23);
+            this.Button_CreateDoc.TabIndex = 4;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnConnectToDB,
+            this.toolStripSeparator1,
+            this.btnCreate});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(914, 27);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnConnectToDB
+            // 
+            this.btnConnectToDB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnConnectToDB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConnectToDB.Name = "btnConnectToDB";
+            this.btnConnectToDB.Size = new System.Drawing.Size(103, 24);
+            this.btnConnectToDB.Text = "ConnectToDB";
+            this.btnConnectToDB.Click += new System.EventHandler(this.btnConnectToDB_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCreate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(56, 24);
+            this.btnCreate.Text = "Create";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AllowDrop = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.Button_CreateDoc);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Main_Form";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private DataGridView dataGridView1;
         private Button Button_CreateDoc;
+        private ToolStrip toolStrip1;
+        private ToolStripButton btnCreate;
+        private ToolStripButton btnConnectToDB;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }
